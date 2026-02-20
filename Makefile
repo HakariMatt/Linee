@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Werror -Wall -g -Iinclude
+CFLAGS = -Werror -Wall -g -Iinclude -std=c23
 
 SRC_DIR = src
 BUILD_DIR = build

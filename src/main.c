@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <string.h>
 #include "buf.h"
 #include "common.h"
 #include "commands.h"

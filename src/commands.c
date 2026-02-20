@@ -1,8 +1,5 @@
 #include "commands.h"
 #include "common.h"
-#include <string.h>
-#include <stdio.h>
-#include <ctype.h>
 
 void print_help(void)
 {
@@ -25,7 +22,7 @@ void print_help(void)
     printf("Everything inside [] is optional.\n");
 }
 
-int save_new(Buffer* buf)
+i32 save_new(Buffer* buf)
 {
     char filename[256];
     printf("save as > ");
@@ -41,7 +38,7 @@ int save_new(Buffer* buf)
     }
 }
 
-int save(Buffer* buf, bool as_new)
+i32 save(Buffer* buf, bool as_new)
 {
     if (buf->last_filename[0] == '\0' || as_new) {
         if (save_new(buf) == 0) return 0;
@@ -84,7 +81,7 @@ void input_mode(Buffer* buf)
 {
     char input[1024];
 
-    size_t line_num = buf->current_line;
+    sz line_num = buf->current_line;
 
     while (1)
     {
@@ -107,7 +104,7 @@ void input_edit_line(Buffer* buf)
 {
     char input[1024];
 
-    size_t line_num = buf->current_line;
+    sz line_num = buf->current_line;
 
     printf(DIM "%5zu │ " RESET, line_num+1);
     fflush(stdout);
@@ -122,7 +119,7 @@ void input_edit_line(Buffer* buf)
     buffer_replace_line(buf, line_num, input);
 
     buf->current_line = line_num + 1;
-    for (uint16_t i = 0; i < 1024; i++) input[i] = '\0';
+    for (u16 i = 0; i < 1024; i++) input[i] = '\0';
 
     input_mode(buf);
 }
